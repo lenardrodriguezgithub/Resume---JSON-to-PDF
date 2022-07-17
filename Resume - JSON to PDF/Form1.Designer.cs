@@ -32,6 +32,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtInputName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bttnSearch = new System.Windows.Forms.Button();
+            this.bttnSave = new System.Windows.Forms.Button();
+            this.test = new System.Windows.Forms.Button();
+            this.Output = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -64,11 +70,74 @@
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
             // 
+            // txtInputName
+            // 
+            this.txtInputName.Location = new System.Drawing.Point(10, 50);
+            this.txtInputName.Name = "txtInputName";
+            this.txtInputName.Size = new System.Drawing.Size(290, 31);
+            this.txtInputName.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(174, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Input Json File name";
+            // 
+            // bttnSearch
+            // 
+            this.bttnSearch.Location = new System.Drawing.Point(10, 90);
+            this.bttnSearch.Name = "bttnSearch";
+            this.bttnSearch.Size = new System.Drawing.Size(112, 34);
+            this.bttnSearch.TabIndex = 2;
+            this.bttnSearch.Text = "Search";
+            this.bttnSearch.UseVisualStyleBackColor = true;
+            this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click);
+            // 
+            // bttnSave
+            // 
+            this.bttnSave.Location = new System.Drawing.Point(190, 600);
+            this.bttnSave.Name = "bttnSave";
+            this.bttnSave.Size = new System.Drawing.Size(112, 34);
+            this.bttnSave.TabIndex = 4;
+            this.bttnSave.Text = "Save";
+            this.bttnSave.UseVisualStyleBackColor = true;
+            // 
+            // test
+            // 
+            this.test.Location = new System.Drawing.Point(110, 180);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(112, 34);
+            this.test.TabIndex = 5;
+            this.test.Text = "test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Click += new System.EventHandler(this.test_Click);
+            // 
+            // Output
+            // 
+            this.Output.AcceptsTab = true;
+            this.Output.Location = new System.Drawing.Point(320, 10);
+            this.Output.Name = "Output";
+            this.Output.ReadOnly = true;
+            this.Output.RightMargin = 5;
+            this.Output.Size = new System.Drawing.Size(930, 650);
+            this.Output.TabIndex = 6;
+            this.Output.Text = "";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1258, 664);
+            this.Controls.Add(this.Output);
+            this.Controls.Add(this.test);
+            this.Controls.Add(this.bttnSave);
+            this.Controls.Add(this.bttnSearch);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtInputName);
             this.Name = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -78,5 +147,11 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private Label label1;
+        private TextBox txtInputName;
+        private Label label2;
+        private Button bttnSearch;
+        private Button bttnSave;
+        private Button test;
+        private RichTextBox Output;
     }
 }
