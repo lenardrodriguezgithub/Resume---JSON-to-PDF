@@ -41,18 +41,56 @@ namespace Resume___JSON_to_PDF
         {
             string jsonfile = File.ReadAllText(path);
             Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(jsonfile);
-            AppendThis(myDeserializedClass.basics.name);
-            AppendThis(myDeserializedClass.basics.email);
+            AppendThis(myDeserializedClass.basics.name, "Times New Roman", 20, FontStyle.Bold, "center");
+
         }
 
+        // append text
         public void AppendThis(string text)
         {
-            Output.AppendText(text);
-            Output.AppendText("\n");
-            Output.ScrollToCaret();
+            Preview.AppendText(text);
+            Preview.AppendText("\n");
+            Preview.ScrollToCaret();
+        }
+
+        public void AppendThis(string text, string font, float size)
+        {
+            Preview.SelectionFont = new Font(font, size);
+            Preview.AppendText(text);
+            Preview.AppendText("\n");
+            Preview.ScrollToCaret();
+        }
+
+        public void AppendThis(string text, string font, float size, FontStyle style)
+        {
+            Preview.SelectionFont = new Font(font, size, style);
+            Preview.AppendText(text);
+            Preview.AppendText("\n");
+            Preview.ScrollToCaret();
+        }
+
+        public void AppendThis(string text, string font, float size, FontStyle style, string align)
+        {
+            if (align == "center")
+            {
+                Preview.SelectionAlignment = HorizontalAlignment.Center;
+            }
+            else if (align == "right")
+            {
+                Preview.SelectionAlignment = HorizontalAlignment.Right;
+            }
+            else if (align == "left")
+            {
+                Preview.SelectionAlignment = HorizontalAlignment.Left;
+            }
+            Preview.SelectionFont = new Font(font, size, style);
+            Preview.AppendText(text);
+            Preview.AppendText("\n");
+            Preview.ScrollToCaret();
         }
     }
 
+    //classes
     public class Basics
     {
         public string? name { get; set; }
@@ -73,12 +111,6 @@ namespace Resume___JSON_to_PDF
         public string? endDate { get; set; }
         public string? gpa { get; set; }
         public List<string>? courses { get; set; }
-    }
-
-    public class Interest
-    {
-        public string? name { get; set; }
-        public List<string>? keywords { get; set; }
     }
 
     public class Language
@@ -110,7 +142,6 @@ namespace Resume___JSON_to_PDF
         public List<Education>? education { get; set; }
         public List<Skill>? skills { get; set; }
         public List<Language>? languages { get; set; }
-        public List<Interest>? interests { get; set; }
     }
 
     public class Skill

@@ -37,7 +37,7 @@
             this.bttnSearch = new System.Windows.Forms.Button();
             this.bttnSave = new System.Windows.Forms.Button();
             this.test = new System.Windows.Forms.Button();
-            this.Output = new System.Windows.Forms.RichTextBox();
+            this.Preview = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -115,21 +115,19 @@
             this.test.UseVisualStyleBackColor = true;
             this.test.Click += new System.EventHandler(this.test_Click);
             // 
-            // Output
+            // Preview
             // 
-            this.Output.AcceptsTab = true;
-            this.Output.Location = new System.Drawing.Point(320, 10);
-            this.Output.Name = "Output";
-            this.Output.ReadOnly = true;
-            this.Output.RightMargin = 5;
-            this.Output.Size = new System.Drawing.Size(930, 650);
-            this.Output.TabIndex = 6;
-            this.Output.Text = "";
+            this.Preview.Location = new System.Drawing.Point(320, 10);
+            this.Preview.Name = "Preview";
+            this.Preview.ReadOnly = true;
+            this.Preview.Size = new System.Drawing.Size(930, 650);
+            this.Preview.TabIndex = 6;
+            this.Preview.Text = "";
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1258, 664);
-            this.Controls.Add(this.Output);
+            this.Controls.Add(this.Preview);
             this.Controls.Add(this.test);
             this.Controls.Add(this.bttnSave);
             this.Controls.Add(this.bttnSearch);
@@ -152,6 +150,6 @@
         private Button bttnSearch;
         private Button bttnSave;
         private Button test;
-        private RichTextBox Output;
+        private RichTextBox Preview;
     }
 }
