@@ -15,6 +15,8 @@ namespace Resume___JSON_to_PDF
 {
     public partial class Form1 : Form
     {
+        public string? json { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -32,60 +34,48 @@ namespace Resume___JSON_to_PDF
             ofd.Title = "Open a JSON File.";
             ofd.Filter = "All Files(*.*) | *.*";
             DialogResult dr = ofd.ShowDialog();
+            json = File.ReadAllText(ofd.FileName);
             txtFileName.Text = ofd.SafeFileName;
-            Deserialize(ofd.FileName);
+            rtbPreview.Text = json;
             bttnOpen.Enabled = false;
+
         }
 
         private void bttnSave_Click(object sender, EventArgs e)
         {
-            string jsonfile = txtFileName.Text;
-            Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
-            Save(MyResume);
-        }
-
-        private void bttnClear_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public void Deserialize(string filename)
-        {
             try
             {
-                string jsonfile = File.ReadAllText(filename);
-                Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
-                // write to textbox preview
+                Root MyResume = JsonConvert.DeserializeObject<Root>(json);
+                MessageBox.Show(MyResume.basics.name);
+                SaveFileDialog sfdlg = new SaveFileDialog();
+                sfdlg.InitialDirectory = "c:\\";
+                sfdlg.Title = "Save your resume.";
+                sfdlg.Filter = "PDF Files (*.PDF) | *.PDF";
+                if (sfdlg.ShowDialog() == DialogResult.OK)
+                {
+                    using (PdfWriter writer = new PdfWriter(sfdlg.FileName))
+                    using (PdfDocument pdfDoc = new PdfDocument(writer))
+                    using (Document document = new Document(pdfDoc))
+                    {
+                        Paragraph paragraph = new Paragraph(rtbPreview.Text);
+                    }
+
+                }
             }
             catch
             {
                 MessageBox.Show("An error occured!", "Error Message");
             }
-        }
-
-        public void Preview(object resume)
-        {
             
         }
 
-        public void Save(object sender)
+        private void bttnClear_Click(object sender, EventArgs e)
         {
-            // save preview as PDF
-            SaveFileDialog sfdlg = new SaveFileDialog(); // select where to save PDF
-            sfdlg.InitialDirectory = "c:\\";
-            sfdlg.Title = "Save your resume.";
-            sfdlg.Filter = "PDF Files (*.PDF) | *.PDF";
-            if (sfdlg.ShowDialog() == DialogResult.OK)
-            {
-                using (PdfWriter writer = new PdfWriter(sfdlg.FileName))
-                using (PdfDocument pdfDoc = new PdfDocument(writer))
-                using (Document document = new Document(pdfDoc))
-                {
-                    Paragraph paragraph = new Paragraph(rtbPreview.Text);
-                }
-
-            }
+            rtbPreview.Clear();
+            bttnOpen.Enabled = true;
+            txtFileName.Clear();
         }
+
     }
 
     public class About
