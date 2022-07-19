@@ -33,12 +33,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bttnSave = new System.Windows.Forms.Button();
-            this.bttnClear = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.Preview = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.bttnSearch = new System.Windows.Forms.Button();
+            this.rtbPreview = new System.Windows.Forms.RichTextBox();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.bttnOpen = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.bttnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -71,47 +71,6 @@
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
             // 
-            // bttnSave
-            // 
-            this.bttnSave.Location = new System.Drawing.Point(30, 170);
-            this.bttnSave.Name = "bttnSave";
-            this.bttnSave.Size = new System.Drawing.Size(112, 34);
-            this.bttnSave.TabIndex = 4;
-            this.bttnSave.Text = "Save";
-            this.bttnSave.UseVisualStyleBackColor = true;
-            this.bttnSave.Click += new System.EventHandler(this.bttnSave_Click);
-            // 
-            // bttnClear
-            // 
-            this.bttnClear.Location = new System.Drawing.Point(210, 130);
-            this.bttnClear.Name = "bttnClear";
-            this.bttnClear.Size = new System.Drawing.Size(112, 34);
-            this.bttnClear.TabIndex = 8;
-            this.bttnClear.Text = "Clear";
-            this.bttnClear.UseVisualStyleBackColor = true;
-            this.bttnClear.Click += new System.EventHandler(this.bttnClear_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(30, 90);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(290, 31);
-            this.txtSearch.TabIndex = 9;
-            // 
-            // Preview
-            // 
-            this.Preview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Preview.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Preview.Location = new System.Drawing.Point(350, 20);
-            this.Preview.Name = "Preview";
-            this.Preview.ReadOnly = true;
-            this.Preview.Size = new System.Drawing.Size(890, 630);
-            this.Preview.TabIndex = 6;
-            this.Preview.Text = "";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -124,26 +83,62 @@
             this.label3.Text = "Resumekun";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // bttnSearch
+            // rtbPreview
             // 
-            this.bttnSearch.Location = new System.Drawing.Point(30, 130);
-            this.bttnSearch.Name = "bttnSearch";
-            this.bttnSearch.Size = new System.Drawing.Size(112, 34);
-            this.bttnSearch.TabIndex = 2;
-            this.bttnSearch.Text = "Search";
-            this.bttnSearch.UseVisualStyleBackColor = true;
-            this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click);
+            this.rtbPreview.EnableAutoDragDrop = true;
+            this.rtbPreview.Location = new System.Drawing.Point(380, 10);
+            this.rtbPreview.Name = "rtbPreview";
+            this.rtbPreview.ReadOnly = true;
+            this.rtbPreview.Size = new System.Drawing.Size(840, 640);
+            this.rtbPreview.TabIndex = 11;
+            this.rtbPreview.Text = "";
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(30, 120);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.ReadOnly = true;
+            this.txtFileName.Size = new System.Drawing.Size(320, 31);
+            this.txtFileName.TabIndex = 12;
+            // 
+            // bttnOpen
+            // 
+            this.bttnOpen.Location = new System.Drawing.Point(30, 160);
+            this.bttnOpen.Name = "bttnOpen";
+            this.bttnOpen.Size = new System.Drawing.Size(112, 34);
+            this.bttnOpen.TabIndex = 13;
+            this.bttnOpen.Text = "Open";
+            this.bttnOpen.UseVisualStyleBackColor = true;
+            this.bttnOpen.Click += new System.EventHandler(this.bttnOpen_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(240, 160);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 34);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "bttnClear";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // bttnSave
+            // 
+            this.bttnSave.Location = new System.Drawing.Point(30, 200);
+            this.bttnSave.Name = "bttnSave";
+            this.bttnSave.Size = new System.Drawing.Size(112, 34);
+            this.bttnSave.TabIndex = 15;
+            this.bttnSave.Text = "Save";
+            this.bttnSave.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1258, 664);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.Preview);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.bttnClear);
             this.Controls.Add(this.bttnSave);
-            this.Controls.Add(this.bttnSearch);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bttnOpen);
+            this.Controls.Add(this.txtFileName);
+            this.Controls.Add(this.rtbPreview);
+            this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -159,11 +154,11 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private Label label1;
-        private Button bttnSave;
-        private RichTextBox Preview;
-        private Button bttnClear;
-        private TextBox txtSearch;
         private Label label3;
-        private Button bttnSearch;
+        private RichTextBox rtbPreview;
+        private TextBox txtFileName;
+        private Button bttnOpen;
+        private Button button3;
+        private Button bttnSave;
     }
 }
