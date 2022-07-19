@@ -45,10 +45,17 @@ namespace Resume___JSON_to_PDF
 
         }
 
-        public void Deserialize(string filename)
+        public object Deserialize(string filename)
         {
             string jsonfile = File.ReadAllText(filename);
             Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
+            return MyResume;
+        }
+
+        public void SaveAs(object resume)
+        {
+            Root MyResume = resume as Root;
+
         }
     }
 
