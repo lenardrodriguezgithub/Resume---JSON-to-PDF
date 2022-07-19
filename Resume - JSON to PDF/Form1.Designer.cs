@@ -37,7 +37,7 @@
             this.rtbPreview = new System.Windows.Forms.RichTextBox();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.bttnOpen = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bttnClear = new System.Windows.Forms.Button();
             this.bttnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -111,14 +111,16 @@
             this.bttnOpen.UseVisualStyleBackColor = true;
             this.bttnOpen.Click += new System.EventHandler(this.bttnOpen_Click);
             // 
-            // button3
+            // bttnClear
             // 
-            this.button3.Location = new System.Drawing.Point(240, 160);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 34);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "bttnClear";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bttnClear.Location = new System.Drawing.Point(240, 160);
+            this.bttnClear.Name = "bttnClear";
+            this.bttnClear.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bttnClear.Size = new System.Drawing.Size(112, 34);
+            this.bttnClear.TabIndex = 14;
+            this.bttnClear.Text = "Clear";
+            this.bttnClear.UseVisualStyleBackColor = true;
+            this.bttnClear.Click += new System.EventHandler(this.bttnClear_Click);
             // 
             // bttnSave
             // 
@@ -128,13 +130,14 @@
             this.bttnSave.TabIndex = 15;
             this.bttnSave.Text = "Save";
             this.bttnSave.UseVisualStyleBackColor = true;
+            this.bttnSave.Click += new System.EventHandler(this.bttnSave_Click);
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1258, 664);
             this.Controls.Add(this.bttnSave);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bttnClear);
             this.Controls.Add(this.bttnOpen);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.rtbPreview);
@@ -143,6 +146,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Resumekun";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +162,7 @@
         private RichTextBox rtbPreview;
         private TextBox txtFileName;
         private Button bttnOpen;
-        private Button button3;
+        private Button bttnClear;
         private Button bttnSave;
     }
 }

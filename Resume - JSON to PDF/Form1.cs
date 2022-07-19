@@ -18,7 +18,34 @@ namespace Resume___JSON_to_PDF
 {
     public partial class Form1 : Form
     {
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void bttnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog(); // open JSON file
+            ofd.InitialDirectory = "c:\\";
+            ofd.Title = "Open a JSON File.";
+            ofd.Filter = "All Files(*.*) | *.*";
+            DialogResult dr = ofd.ShowDialog();
+            txtFileName.Text = ofd.SafeFileName;
+            Deserialize(ofd.FileName);
+            bttnOpen.Enabled = false;
+        }
+
+        private void bttnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Deserialize(string json)
         {
 
         }
