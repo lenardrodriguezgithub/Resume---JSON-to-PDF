@@ -3,9 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
-using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Newtonsoft;
 using Newtonsoft.Json;
 using iText;
@@ -45,16 +42,17 @@ namespace Resume___JSON_to_PDF
 
         }
 
-        public object Deserialize(string filename)
+        public void Deserialize(string filename)
         {
             string jsonfile = File.ReadAllText(filename);
             Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
-            return MyResume;
+
+            // test
+            rtbPreview.Text = MyResume.basics.name;
         }
 
         public void SaveAs(object resume)
         {
-            Root MyResume = resume as Root;
 
         }
     }
