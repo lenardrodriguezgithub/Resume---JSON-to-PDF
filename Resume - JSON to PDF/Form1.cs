@@ -47,7 +47,6 @@ namespace Resume___JSON_to_PDF
             }
             catch
             {
-                MessageBox.Show("Failed to open file!", "Error Message");
                 rtbPreview.Clear();
                 bttnOpen.Enabled = true;
                 txtFileName.Clear();
@@ -64,7 +63,7 @@ namespace Resume___JSON_to_PDF
                 sfdlg.InitialDirectory = "c:\\";
                 sfdlg.Title = "Save your resume.";
                 sfdlg.Filter = "PDF Files (*.PDF) | *.PDF";
-                MessageBox.Show("Your resume is saved!", "Message");
+
                 if (sfdlg.ShowDialog() == DialogResult.OK)
                 {
                     using (PdfWriter writer = new PdfWriter(sfdlg.FileName))
@@ -175,8 +174,8 @@ namespace Resume___JSON_to_PDF
                             }
                         }
                     }
-
                 }
+                MessageBox.Show("Your resume is saved!", "Message");
             }
             catch
             {
