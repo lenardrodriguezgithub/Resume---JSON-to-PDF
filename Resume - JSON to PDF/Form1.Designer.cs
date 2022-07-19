@@ -33,12 +33,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bttnSearch = new System.Windows.Forms.Button();
             this.bttnSave = new System.Windows.Forms.Button();
             this.bttnClear = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.Preview = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.bttnSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -70,16 +70,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
-            // 
-            // bttnSearch
-            // 
-            this.bttnSearch.Location = new System.Drawing.Point(30, 130);
-            this.bttnSearch.Name = "bttnSearch";
-            this.bttnSearch.Size = new System.Drawing.Size(112, 34);
-            this.bttnSearch.TabIndex = 2;
-            this.bttnSearch.Text = "Search";
-            this.bttnSearch.UseVisualStyleBackColor = true;
-            this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click);
             // 
             // bttnSave
             // 
@@ -134,6 +124,16 @@
             this.label3.Text = "Resumekun";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bttnSearch
+            // 
+            this.bttnSearch.Location = new System.Drawing.Point(30, 130);
+            this.bttnSearch.Name = "bttnSearch";
+            this.bttnSearch.Size = new System.Drawing.Size(112, 34);
+            this.bttnSearch.TabIndex = 2;
+            this.bttnSearch.Text = "Search";
+            this.bttnSearch.UseVisualStyleBackColor = true;
+            this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click);
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightGray;
@@ -159,11 +159,11 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private Label label1;
-        private Button bttnSearch;
         private Button bttnSave;
         private RichTextBox Preview;
         private Button bttnClear;
         private TextBox txtSearch;
         private Label label3;
+        private Button bttnSearch;
     }
 }
