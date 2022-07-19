@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 using Newtonsoft;
 using Newtonsoft.Json;
 using iText;
+using iText.Kernel.Colors;
+using iText.Kernel.Font;
 using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Action;
+using iText.Kernel.Pdf.Canvas.Draw;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
@@ -46,7 +50,6 @@ namespace Resume___JSON_to_PDF
             try
             {
                 Root MyResume = JsonConvert.DeserializeObject<Root>(json);
-                MessageBox.Show(MyResume.basics.name);
                 SaveFileDialog sfdlg = new SaveFileDialog();
                 sfdlg.InitialDirectory = "c:\\";
                 sfdlg.Title = "Save your resume.";
@@ -57,7 +60,80 @@ namespace Resume___JSON_to_PDF
                     using (PdfDocument pdfDoc = new PdfDocument(writer))
                     using (Document document = new Document(pdfDoc))
                     {
-                        Paragraph paragraph = new Paragraph(rtbPreview.Text);
+                        LineSeparator ls = new LineSeparator(new SolidLine());
+
+                        // name
+                        Paragraph name = new Paragraph(MyResume.basics.name)
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(20).SetBold();
+                        document.Add(name);
+                        Paragraph title = new Paragraph(MyResume.basics.title)
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(15);
+                        document.Add(title);
+
+                        // about
+                        Paragraph about = new Paragraph("ABOUT")
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(15);
+                        document.Add(about);
+                        
+                        document.Add(ls);
+                        Paragraph aboutSummary = new Paragraph(MyResume.about.summary)
+                           .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12); 
+                        document.Add(aboutSummary);
+
+                        // work experience
+                        Paragraph work = new Paragraph("WORK EXPERIENCE")
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(15);
+                        document.Add(work);
+                        document.Add(ls);
+                        Paragraph workExp = new Paragraph(MyResume.work.position + 
+                            " | " +
+                            MyResume.work.company)
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12);
+                        document.Add(workExp);
+                        Paragraph workDate = new Paragraph(MyResume.work.startDate +
+                            " to " +
+                            MyResume.work.endDate)
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12);
+                        document.Add(workDate);
+
+                        foreach(var h in MyResume.work.highlights)
+                        {
+                            Paragraph workhighlight = new Paragraph(h)
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12);
+                            document.Add(workhighlight);
+                        }
+
+                        // education
+                        Paragraph educ = new Paragraph("EDUCATION")
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(15);
+                        document.Add(work);
+                        document.Add(ls);
+
+                        Paragraph educArea = new Paragraph(MyResume.education.area +
+                            " | " +
+                            MyResume.education.studyType)
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12);
+                        document.Add(educArea);
+                        Paragraph educInst = new Paragraph(MyResume.education.institution)
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12);
+                        Paragraph educDate = new Paragraph(MyResume.education.startDate +
+                            " to " +
+                            MyResume.education.endDate)
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(12);
+                        document.Add(educDate);
+
                     }
 
                 }
