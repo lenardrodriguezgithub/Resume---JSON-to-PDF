@@ -73,19 +73,19 @@ namespace Resume___JSON_to_PDF
                         document.Add(title);
 
                         // about
-                        Paragraph about = new Paragraph("ABOUT")
+                        Paragraph about = new Paragraph("\nABOUT")
                             .SetTextAlignment(TextAlignment.LEFT)
                             .SetFontSize(15);
                         document.Add(about);
                         
                         document.Add(ls);
                         Paragraph aboutSummary = new Paragraph(MyResume.about.summary)
-                           .SetTextAlignment(TextAlignment.LEFT)
+                            .SetTextAlignment(TextAlignment.LEFT)
                             .SetFontSize(12); 
                         document.Add(aboutSummary);
 
                         // work experience
-                        Paragraph work = new Paragraph("WORK EXPERIENCE")
+                        Paragraph work = new Paragraph("\nWORK EXPERIENCE")
                             .SetTextAlignment(TextAlignment.LEFT)
                             .SetFontSize(15);
                         document.Add(work);
@@ -99,23 +99,23 @@ namespace Resume___JSON_to_PDF
                         Paragraph workDate = new Paragraph(MyResume.work.startDate +
                             " to " +
                             MyResume.work.endDate)
-                            .SetTextAlignment(TextAlignment.LEFT)
-                            .SetFontSize(12);
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(12);
                         document.Add(workDate);
 
                         foreach(var h in MyResume.work.highlights)
                         {
-                            Paragraph workhighlight = new Paragraph(h)
-                            .SetTextAlignment(TextAlignment.LEFT)
-                            .SetFontSize(12);
+                            Paragraph workhighlight = new Paragraph(" • " + h)
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(12);
                             document.Add(workhighlight);
                         }
 
                         // education
-                        Paragraph educ = new Paragraph("EDUCATION")
+                        Paragraph educ = new Paragraph("\nEDUCATION")
                             .SetTextAlignment(TextAlignment.LEFT)
                             .SetFontSize(15);
-                        document.Add(work);
+                        document.Add(educ);
                         document.Add(ls);
 
                         Paragraph educArea = new Paragraph(MyResume.education.area +
@@ -127,6 +127,7 @@ namespace Resume___JSON_to_PDF
                         Paragraph educInst = new Paragraph(MyResume.education.institution)
                             .SetTextAlignment(TextAlignment.LEFT)
                             .SetFontSize(12);
+                        document.Add(educInst);
                         Paragraph educDate = new Paragraph(MyResume.education.startDate +
                             " to " +
                             MyResume.education.endDate)
@@ -134,6 +135,26 @@ namespace Resume___JSON_to_PDF
                             .SetFontSize(12);
                         document.Add(educDate);
 
+                        // skills
+                        Paragraph skills = new Paragraph("\nSKILLS")
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(15);
+                        document.Add(skills);
+                        document.Add(ls);
+                        foreach(var s in MyResume.skills)
+                        {
+                            Paragraph skillName = new Paragraph(s.name + " | Level: " + s.level)
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(12);
+                            document.Add(skillName);
+                            foreach(var k in s.keywords)
+                            {
+                                Paragraph skillKey = new Paragraph(" • " + k)
+                                    .SetTextAlignment(TextAlignment.LEFT)
+                                    .SetFontSize(12);
+                                document.Add(skillKey);
+                            }
+                        }
                     }
 
                 }
