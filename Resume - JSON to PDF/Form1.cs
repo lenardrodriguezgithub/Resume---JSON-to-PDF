@@ -72,6 +72,14 @@ namespace Resume___JSON_to_PDF
                             .SetFontSize(15);
                         document.Add(title);
 
+                        // contact
+                        Paragraph contact = new Paragraph(MyResume.basics.address + " | " +
+                            MyResume.basics.phone + " | " +
+                            MyResume.basics.email + " | " +
+                            MyResume.basics.website + "\n")
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(12);
+                        document.Add(contact);
                         // about
                         Paragraph about = new Paragraph("\nABOUT")
                             .SetTextAlignment(TextAlignment.LEFT)
@@ -187,7 +195,7 @@ namespace Resume___JSON_to_PDF
         public string? phone { get; set; }
         public string? title { get; set; }
         public string? website { get; set; }
-        public Location? location { get; set; }
+        public string? address { get; set; }
     }
 
     public class Education
@@ -203,9 +211,6 @@ namespace Resume___JSON_to_PDF
     {
         public string? address { get; set; }
         public string? postalCode { get; set; }
-        public string? city { get; set; }
-        public string? countryCode { get; set; }
-        public string? region { get; set; }
     }
 
     public class Root
