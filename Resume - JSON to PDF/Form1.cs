@@ -15,6 +15,11 @@ namespace Resume___JSON_to_PDF
 {
     public partial class Form1 : Form
     {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -34,7 +39,9 @@ namespace Resume___JSON_to_PDF
 
         private void bttnSave_Click(object sender, EventArgs e)
         {
-
+            string jsonfile = txtFileName.Text;
+            Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
+            Save(MyResume);
         }
 
         private void bttnClear_Click(object sender, EventArgs e)
@@ -44,20 +51,43 @@ namespace Resume___JSON_to_PDF
 
         public void Deserialize(string filename)
         {
-            string jsonfile = File.ReadAllText(filename);
-            Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
-
-            // test
-            rtbPreview.Text = MyResume.basics.name;
+            try
+            {
+                string jsonfile = File.ReadAllText(filename);
+                Root MyResume = JsonConvert.DeserializeObject<Root>(jsonfile);
+                // write to textbox preview
+            }
+            catch
+            {
+                MessageBox.Show("An error occured!", "Error Message");
+            }
         }
 
-        public void SaveAs(object resume)
+        public void Preview(object resume)
         {
+            
+        }
 
+        public void Save(object sender)
+        {
+            // save preview as PDF
+            SaveFileDialog sfdlg = new SaveFileDialog(); // select where to save PDF
+            sfdlg.InitialDirectory = "c:\\";
+            sfdlg.Title = "Save your resume.";
+            sfdlg.Filter = "PDF Files (*.PDF) | *.PDF";
+            if (sfdlg.ShowDialog() == DialogResult.OK)
+            {
+                using (PdfWriter writer = new PdfWriter(sfdlg.FileName))
+                using (PdfDocument pdfDoc = new PdfDocument(writer))
+                using (Document document = new Document(pdfDoc))
+                {
+                    Paragraph paragraph = new Paragraph(rtbPreview.Text);
+                }
+
+            }
         }
     }
 
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class About
     {
         public string? summary { get; set; }
