@@ -85,6 +85,9 @@
             // 
             // rtbPreview
             // 
+            this.rtbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbPreview.EnableAutoDragDrop = true;
             this.rtbPreview.Location = new System.Drawing.Point(380, 10);
             this.rtbPreview.Name = "rtbPreview";

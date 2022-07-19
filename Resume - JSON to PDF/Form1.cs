@@ -33,15 +33,25 @@ namespace Resume___JSON_to_PDF
 
         private void bttnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog(); // open JSON file
-            ofd.InitialDirectory = "c:\\";
-            ofd.Title = "Open a JSON File.";
-            ofd.Filter = "All Files(*.*) | *.*";
-            DialogResult dr = ofd.ShowDialog();
-            json = File.ReadAllText(ofd.FileName);
-            txtFileName.Text = ofd.SafeFileName;
-            rtbPreview.Text = json;
-            bttnOpen.Enabled = false;
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog(); // open JSON file
+                ofd.InitialDirectory = "c:\\";
+                ofd.Title = "Open a JSON File.";
+                ofd.Filter = "JSON Files(*.JSON*) | *.JSON*";
+                DialogResult dr = ofd.ShowDialog();
+                json = File.ReadAllText(ofd.FileName);
+                txtFileName.Text = ofd.SafeFileName;
+                rtbPreview.Text = json;
+                bttnOpen.Enabled = false;
+            }
+            catch
+            {
+                MessageBox.Show("Failed to open file!", "Error Message");
+                rtbPreview.Clear();
+                bttnOpen.Enabled = true;
+                txtFileName.Clear();
+            }
 
         }
 
@@ -54,6 +64,7 @@ namespace Resume___JSON_to_PDF
                 sfdlg.InitialDirectory = "c:\\";
                 sfdlg.Title = "Save your resume.";
                 sfdlg.Filter = "PDF Files (*.PDF) | *.PDF";
+                MessageBox.Show("Your resume is saved!", "Message");
                 if (sfdlg.ShowDialog() == DialogResult.OK)
                 {
                     using (PdfWriter writer = new PdfWriter(sfdlg.FileName))
@@ -170,6 +181,9 @@ namespace Resume___JSON_to_PDF
             catch
             {
                 MessageBox.Show("An error occured!", "Error Message");
+                rtbPreview.Clear();
+                bttnOpen.Enabled = true;
+                txtFileName.Clear();
             }
             
         }
